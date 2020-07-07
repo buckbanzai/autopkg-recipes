@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Comment</key>
+	<string>Created with Recipe Robot v1.2.1 (https://github.com/homebysix/recipe-robot)</string>
+	<key>Description</key>
+	<string>Downloads the latest version of X-AIR-Edit.</string>
+	<key>Identifier</key>
+	<string>com.github.buckbanzai.download.X-AIR-Edit</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>X-AIR-Edit</string>
+		<key>BEHRINGER_MODEL</key>
+		<string>P0BI6</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+		<key>Arguments</key>
+		<dict>
+			<key>re_pattern</key>
+			<string>(?&lt;=MAC_).+?(?=\.zip)</string>
+			<key>result_output_var_name</key>
+			<string>version</string>
+			<key>url</key>
+			<string>https://www.behringer.com/.rest/musictribe/v1/downloadcenter/solr-dldatatable?brandName=behringer&amp;modelCode=%BEHRINGER_MODEL%&amp;type=Software&amp;iDisplayStart=0&amp;iDisplayLength=15</string>
+		</dict>
+		<key>Processor</key>
+		<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>%NAME%.zip</string>
+				<key>url</key>
+				<string>https://mediadl.musictribe.com/download/software/behringer/XAIR/X-AIR-Edit_MAC_%version%.zip</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>archive_path</key>
+				<string>%pathname%</string>
+				<key>destination_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%</string>
+				<key>purge_destination</key>
+				<true/>
+			</dict>
+			<key>Processor</key>
+			<string>Unarchiver</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/X-AIR-Edit.app</string>
+				<key>requirement</key>
+				<string>identifier "com.music-group.X-AIR-Edit" and anchor apple generic and certificate 1[field.1.2.840.113635.100.6.2.6] /* exists */ and certificate leaf[field.1.2.840.113635.100.6.1.13] /* exists */ and certificate leaf[subject.OU] = KZ84TRLT54</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>input_plist_path</key>
+				<string>%RECIPE_CACHE_DIR%/%NAME%/X-AIR-Edit.app/Contents/Info.plist</string>
+				<key>plist_version_key</key>
+				<string>CFBundleShortVersionString</string>
+			</dict>
+			<key>Processor</key>
+			<string>Versioner</string>
+		</dict>
+	</array>
+</dict>
+</plist>
