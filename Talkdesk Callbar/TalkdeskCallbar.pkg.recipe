@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Description</key>
+    <string>Downloads the latest version of Talkdesk Callbar and renames it based</string>
+    <key>Identifier</key>
+    <string>com.github.buckbanzai.pkg.talkdeskcallbar</string>
+    <key>MinimumVersion</key>
+    <string>1.0.0</string>
+    <key>ParentRecipe</key>
+    <string>com.github.buckbanzai.download.talkdeskcallbar</string>
+    <key>Process</key>
+    <array>
+        <dict>
+            <key>Processor</key>
+            <string>PkgCopier</string>
+            <key>Arguments</key>
+            <dict>
+                <key>source_pkg</key>
+                <string>%pathname%</string>
+                <key>pkg_path</key>
+                <string>%RECIPE_CACHE_DIR%/TalkdeskCallbar-%version%.pkg</string>
+            </dict>
+        </dict>
+    </array>
+</dict>
+</plist>

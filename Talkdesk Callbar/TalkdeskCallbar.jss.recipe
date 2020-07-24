@@ -5,7 +5,7 @@
 	<key>Comment</key>
 	<string>Created with Recipe Robot v2.0.0 (https://github.com/homebysix/recipe-robot)</string>
 	<key>Description</key>
-	<string>Downloads the latest version of Callbar and imports it into your JSS.</string>
+	<string>Downloads the latest version of Talkdesk Callbar and imports it into your JSS.</string>
 	<key>Identifier</key>
 	<string>com.github.buckbanzai.jss.talkdeskcallbar</string>
 	<key>Input</key>
@@ -30,7 +30,7 @@
 	<key>MinimumVersion</key>
 	<string>1.0.0</string>
 	<key>ParentRecipe</key>
-	<string>com.github.buckbanzai.download.talkdeskcallbar</string>
+	<string>com.github.buckbanzai.pkg.talkdeskcallbar</string>
 	<key>Process</key>
 	<array>
 		<dict>
