@@ -17,7 +17,7 @@
 		<key>GROUP_TEMPLATE</key>
 		<string>SmartGroupTemplate.xml</string>
 		<key>NAME</key>
-		<string>Talkdesk Callbar</string>
+		<string>Callbar</string>
 		<key>POLICY_CATEGORY</key>
 		<string>Testing</string>
 		<key>POLICY_TEMPLATE</key>
