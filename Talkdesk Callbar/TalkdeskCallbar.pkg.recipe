@@ -6,6 +6,11 @@
     <string>Downloads the latest version of Talkdesk Callbar and renames it based</string>
     <key>Identifier</key>
     <string>com.github.buckbanzai.pkg.talkdeskcallbar</string>
+    <key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Talkdesk Callbar</string>
+	</dict>
     <key>MinimumVersion</key>
     <string>1.0.0</string>
     <key>ParentRecipe</key>
