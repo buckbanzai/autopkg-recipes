@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Description</key>
+	<string>Downloads the latest version of Talkdesk Callbar.</string>
+	<key>Identifier</key>
+	<string>com.github.buckbanzai.download.talkdeskcallbar</string>
+	<key>Input</key>
+	<dict>
+		<key>NAME</key>
+		<string>Talkdesk Callbar</string>
+	</dict>
+	<key>MinimumVersion</key>
+	<string>1.0.0</string>
+	<key>Process</key>
+	<array>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>re_pattern</key>
+				<string>[&quot;,&#39;]version[&quot;,&#39;]\s?:\s?[&quot;,&#39;](?P&lt;version&gt;.*?)[&quot;,&#39;]</string>
+				<key>url</key>
+				<string>https://downloadcallbar.talkdesk.com/release_metadata.json</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLTextSearcher</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>filename</key>
+				<string>TalkdeskCallbar-%version%.pkg</string>
+				<key>url</key>
+				<string>https://downloadcallbar.talkdesk.com/Callbar-%version%.pkg</string>
+			</dict>
+			<key>Processor</key>
+			<string>URLDownloader</string>
+		</dict>
+		<dict>
+			<key>Processor</key>
+			<string>EndOfCheckPhase</string>
+		</dict>
+		<dict>
+			<key>Arguments</key>
+			<dict>
+				<key>expected_authority_names</key>
+				<array>
+					<string>Developer ID Installer: Talkdesk, Inc. (YGGJX44TB8)</string>
+					<string>Developer ID Certification Authority</string>
+					<string>Apple Root CA</string>
+				</array>
+				<key>input_path</key>
+				<string>%pathname%</string>
+			</dict>
+			<key>Processor</key>
+			<string>CodeSignatureVerifier</string>
+		</dict>
+	</array>
+</dict>
+</plist>
